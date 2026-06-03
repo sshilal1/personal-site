@@ -1,0 +1,10 @@
+{
+  "name": "personal-site-design-lab",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "check": "node --check src/site-data.js && node --check src/theme-renderers.js && node --check src/app.js",
+    "build": "npm run check && node scripts/build.mjs"
+  }
+}
