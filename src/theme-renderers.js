@@ -22,7 +22,18 @@ const icon = (name) => {
 const linkAttrs = (href) =>
   href ? ` href="${escapeHtml(href)}" target="_blank" rel="noreferrer"` : ' href="#contact"';
 
+const projectHref = (project) => project.href || project.links?.[0]?.url || "";
+
 const techList = (items) => items.map((item) => `<span>${escapeHtml(item)}</span>`).join("");
+
+const projectLinks = (project) => {
+  const links = project.links?.length ? project.links : project.href ? [{ label: "Open", url: project.href }] : [];
+  if (!links.length) return "";
+  return `
+    <div class="project-links">
+      ${links.map((link) => `<a href="${escapeHtml(link.url)}" target="_blank" rel="noreferrer">${escapeHtml(link.label)} ${icon("external")}</a>`).join("")}
+    </div>`;
+};
 
 const statusClass = (status) => {
   const normalized = status.toLowerCase();
@@ -67,7 +78,7 @@ const afterProjects = () => `
         .map(
           (project, index) => `
         <article class="after-project-card ${project.featured ? "is-featured" : ""}">
-          <a${linkAttrs(project.href)} aria-label="${escapeHtml(project.name)}">
+          <div class="project-card-inner">
             <div class="project-card-top">
               <span class="project-number">${String(index + 1).padStart(2, "0")}</span>
               <span class="project-status status-${statusClass(project.status)}">${escapeHtml(project.status)}</span>
@@ -76,7 +87,8 @@ const afterProjects = () => `
             <p>${escapeHtml(project.summary)}</p>
             <small>${escapeHtml(project.impact)}</small>
             <div class="project-tech">${techList(project.tech)}</div>
-          </a>
+            ${projectLinks(project)}
+          </div>
         </article>`,
         )
         .join("")}
@@ -111,7 +123,7 @@ const notesProjectRows = () =>
           <span>${String(index + 1).padStart(2, "0")}</span>
           <div><small>${escapeHtml(project.type)} / ${escapeHtml(project.status)}</small><h2>${escapeHtml(project.name)}</h2></div>
           <p>${escapeHtml(project.summary)}</p>
-          <b>${icon(project.href ? "external" : "arrow")}</b>
+          <b>${icon(projectHref(project) ? "external" : "arrow")}</b>
         </article>`,
     )
     .join("");
@@ -120,7 +132,7 @@ const terminalRows = () =>
   siteData.projects
     .map(
       (project, index) => `
-        <a${linkAttrs(project.href)}>
+        <a${linkAttrs(projectHref(project))}>
           <span>${String(index + 1).padStart(2, "0")}</span>
           <b>${escapeHtml(project.name.toUpperCase().replaceAll(" ", "_"))}</b>
           <small>${escapeHtml(project.status.toUpperCase())}</small>
@@ -133,7 +145,7 @@ const studioWork = () =>
   featuredProjects()
     .map(
       (project, index) => `
-        <a${linkAttrs(project.href)}>
+        <a${linkAttrs(projectHref(project))}>
           <span>${String(index + 1).padStart(2, "0")}</span>
           <strong>${escapeHtml(project.name).replaceAll(" ", "<br />")}</strong>
           <em>${escapeHtml(project.type)}</em>
@@ -148,7 +160,7 @@ const compactProjectIndex = (variant = "dark") => `
       ${siteData.projects
         .map(
           (project, index) => `
-        <a${linkAttrs(project.href)}>
+        <a${linkAttrs(projectHref(project))}>
           <span>${String(index + 1).padStart(2, "0")}</span>
           <strong>${escapeHtml(project.name)}</strong>
           <small>${escapeHtml(project.status)} / ${escapeHtml(project.type)}</small>
@@ -290,7 +302,7 @@ export const themes = [
         <section class="bento-grid" id="bento-work">
           <article class="bento-main" id="bento-about"><span class="bento-chip">HELLO THERE</span><h1>I build teams,<br />games <i>&amp;</i> apps.</h1><p>${escapeHtml(siteData.person.tagline)}</p></article>
           <article class="bento-green"><span>${icon("spark")}</span><h2>${escapeHtml(siteData.timeline[2].body)}</h2></article>
-          <article class="bento-game"><small>${escapeHtml(first.status)}</small><div class="pixel-window"><i></i><i></i><i></i><b></b></div><h2>${escapeHtml(first.name)}</h2><a${linkAttrs(first.href)}>View build ${icon("arrow")}</a></article>
+          <article class="bento-game"><small>${escapeHtml(first.status)}</small><div class="pixel-window"><i></i><i></i><i></i><b></b></div><h2>${escapeHtml(first.name)}</h2><a${linkAttrs(projectHref(first))}>View build ${icon("arrow")}</a></article>
           <article class="bento-app"><small>${escapeHtml(second.status)}</small><div class="bento-bars"><i></i><i></i><i></i></div><h2>${escapeHtml(second.name)}</h2></article>
           <article class="bento-about"><small>${escapeHtml(third.status)}</small><p>${escapeHtml(third.name)}: ${escapeHtml(third.type)}</p></article>
         </section>

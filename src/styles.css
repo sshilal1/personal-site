@@ -64,9 +64,9 @@ button { border: 0; font: inherit; cursor: pointer; }
 .section-heading h2, .after-about h2, .site-contact h2 { font: 700 clamp(38px, 5vw, 72px)/.92 "Space Grotesk"; letter-spacing: -4px; margin: 0; max-width: 780px; }
 .after-projects { background: #111412; color: #f3efe5; padding: 92px 6vw 70px; }
 .after-project-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.after-project-card a { background: #181d19; border: 1px solid #2b332a; color: #f3efe5; display: flex; flex-direction: column; gap: 17px; min-height: 385px; padding: 24px; position: relative; transition: border-color .2s ease, transform .2s ease; }
-.after-project-card a:hover { border-color: #b9ff52; transform: translateY(-5px); }
-.after-project-card.is-featured a { background: linear-gradient(145deg, rgba(185,255,82,.12), #181d19 45%); }
+.project-card-inner { background: #181d19; border: 1px solid #2b332a; color: #f3efe5; display: flex; flex-direction: column; gap: 17px; min-height: 405px; padding: 24px; position: relative; transition: border-color .2s ease, transform .2s ease; }
+.after-project-card:hover .project-card-inner { border-color: #b9ff52; transform: translateY(-5px); }
+.after-project-card.is-featured .project-card-inner { background: linear-gradient(145deg, rgba(185,255,82,.12), #181d19 45%); }
 .project-card-top { align-items: center; display: flex; justify-content: space-between; }
 .project-number, .project-status { font: 10px "DM Mono"; letter-spacing: 1.1px; text-transform: uppercase; }
 .project-number { color: #b9ff52; }
@@ -80,13 +80,16 @@ button { border: 0; font: inherit; cursor: pointer; }
 .after-project-card small { color: #8f988b; display: block; font-size: 13px; line-height: 1.45; }
 .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
 .project-tech span { border: 1px solid #394334; border-radius: 999px; color: #b9ff52; font: 10px "DM Mono"; letter-spacing: .4px; padding: 7px 9px; }
+.project-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.project-links a { align-items: center; background: #b9ff52; border-radius: 999px; color: #111412; display: inline-flex; font: 10px "DM Mono"; gap: 6px; letter-spacing: .8px; padding: 9px 11px; text-transform: uppercase; }
+.project-links a .icon { height: 13px; width: 13px; }
 .after-about { background: #151915; border-top: 1px solid #2a3228; color: #f3efe5; display: grid; gap: 44px; grid-template-columns: 1.15fr .85fr; padding: 88px 6vw; }
 .after-about p { color: #bdc3b8; font-size: 17px; line-height: 1.65; max-width: 650px; }
 .company-link { color: #b9ff52; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
-.after-stats { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.after-stats article { background: #0f120f; border: 1px solid #2a3228; min-height: 135px; padding: 22px; }
-.after-stats strong { color: #b9ff52; display: block; font: 700 34px "Space Grotesk"; letter-spacing: -1.5px; margin-bottom: 12px; }
-.after-stats span { color: #aab1a4; font-size: 13px; line-height: 1.4; }
+.after-stats { align-self: end; display: grid; gap: 12px; }
+.after-stats article { align-items: center; background: #0f120f; border: 1px solid #2a3228; display: grid; gap: 18px; grid-template-columns: minmax(0, 1fr) 118px; min-height: 92px; padding: 20px 22px; }
+.after-stats strong { color: #b9ff52; display: block; font: 700 clamp(30px, 2.6vw, 46px)/.92 "Space Grotesk"; letter-spacing: -1.8px; }
+.after-stats span { color: #aab1a4; font-size: 13px; line-height: 1.4; text-align: right; }
 .after-timeline { background: #b9ff52; color: #111412; display: grid; gap: 1px; grid-template-columns: repeat(4, 1fr); padding: 1px 6vw; }
 .after-timeline article { background: #b9ff52; min-height: 240px; padding: 34px 26px; }
 .after-timeline span { font: 10px "DM Mono"; letter-spacing: 1px; text-transform: uppercase; }
@@ -243,7 +246,7 @@ button { border: 0; font: inherit; cursor: pointer; }
   .section-heading h2, .after-about h2, .site-contact h2 { font-size: 46px; letter-spacing: -3px; }
   .after-projects, .after-about, .site-contact, .compact-index { padding-left: 5vw; padding-right: 5vw; }
   .after-project-grid, .after-about, .after-timeline { grid-template-columns: 1fr; }
-  .after-project-card a { min-height: 330px; }
+  .project-card-inner { min-height: 330px; }
   .after-stats { grid-template-columns: 1fr; }
   .after-timeline { padding-left: 0; padding-right: 0; }
   .after-timeline article { padding-left: 5vw; padding-right: 5vw; }

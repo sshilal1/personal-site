@@ -24,14 +24,14 @@ export const siteData = {
   },
   stats: [
     { label: "Years building software", value: "10+" },
-    { label: "Main stack", value: "TypeScript / React / Node" },
+    { label: "Main stack + LLMs", value: "TS / React / Node" },
     { label: "Day job", value: "Xometry" },
-    { label: "Also using", value: "React Native / SQL / LLMs" },
   ],
   focusAreas: [
     "Engineering leadership",
     "Indie games",
     "React Native apps",
+    "Fantasy sports tools",
     "Board-game systems",
     "Prediction tools",
     "Home-lab infrastructure",
@@ -45,6 +45,7 @@ export const siteData = {
       year: "2026",
       featured: true,
       href: "https://apps.apple.com/us/app/t-e-pitch/id6742805768",
+      links: [{ label: "App Store", url: "https://apps.apple.com/us/app/t-e-pitch/id6742805768" }],
       summary:
         "A multiplayer trick-taking card game inspired by Euchre and Spades, with a production iOS app, real-time game server, shared game logic packages, auth, bots, and player stats.",
       impact:
@@ -59,6 +60,7 @@ export const siteData = {
       year: "2026",
       featured: true,
       href: "",
+      links: [{ label: "GitHub", url: "https://github.com/sshilal1/clean-slate-todo" }],
       summary:
         "A calm, minimal task app built around keeping a clean slate instead of accumulating guilt-driven lists.",
       impact:
@@ -73,11 +75,33 @@ export const siteData = {
       year: "Ongoing",
       featured: true,
       href: "https://shil-tfm.ddns.net/",
+      links: [
+        { label: "Live site", url: "https://shil-tfm.ddns.net/" },
+        { label: "GitHub", url: "https://github.com/sshilal1/terraforming-mars" },
+      ],
       summary:
         "A locally hosted fork of the open-source Terraforming Mars implementation, maintained for years with custom mods and additions for a friend group.",
       impact:
         "Runs through a home-network deployment path with reverse proxying, PM2 processes, and long-lived game state.",
       tech: ["TypeScript", "Vue", "Node", "PM2", "nginx", "Raspberry Pi"],
+    },
+    {
+      id: "golf-draft-tracker",
+      name: "Golf Majors Fantasy",
+      type: "Fantasy golf website",
+      status: "Live for friends",
+      year: "2026",
+      featured: true,
+      href: "https://golf.shillex.us/",
+      links: [
+        { label: "Live site", url: "https://golf.shillex.us/" },
+        { label: "GitHub", url: "https://github.com/sshilal1/golf-majors-fantasy" },
+      ],
+      summary:
+        "A self-hosted fantasy golf league site for running majors drafts, tracking teams, and following live scoring with ESPN leaderboard data.",
+      impact:
+        "Built snake-draft flows, per-round scoring, live leaderboard refreshes, admin tools, GroupMe draft notifications, and a Raspberry Pi deployment.",
+      tech: ["React", "Vite", "TypeScript", "Node", "Express", "SQLite", "ESPN API", "PM2"],
     },
     {
       id: "tfm-friend-bot",
