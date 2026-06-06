@@ -68,6 +68,21 @@ export const siteData = {
       tech: ["Expo", "React Native", "TypeScript", "AsyncStorage", "TestFlight"],
     },
     {
+      id: "menubar-usage",
+      name: "Menubar Usage",
+      type: "macOS menu bar utility",
+      status: "Installable",
+      year: "2026",
+      featured: true,
+      href: "https://github.com/sshilal1/menubar-usage",
+      links: [{ label: "GitHub", url: "https://github.com/sshilal1/menubar-usage" }],
+      summary:
+        "A tiny macOS menu bar app that shows Claude and ChatGPT/Codex usage at a glance.",
+      impact:
+        "Surfaces rolling 5-hour and weekly limits, reset times, plan labels, local-only auth, offline estimates, and a LaunchAgent installer.",
+      tech: ["Swift", "AppKit", "macOS", "LaunchAgent", "ChatGPT", "Claude"],
+    },
+    {
       id: "terraforming-mars",
       name: "Terraforming Mars Custom Fork",
       type: "Board-game platform",
